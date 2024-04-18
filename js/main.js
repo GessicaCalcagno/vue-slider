@@ -1,5 +1,3 @@
-
-
 // TEST
 //alert('ciao')
 
@@ -192,7 +190,7 @@
 //     isAutoplayActive = true;
 //   }
 // }
-// //_________________________________
+//____________________________________________________________
 
 // Descrizione:
 // Partendo dal markup della versione svolta in js plain, rifare lo slider ma questa volta usando Vue.
@@ -202,6 +200,7 @@
 // 2- applicare l'autoplay allo slider: ogni 3 secondi, cambia immagine automaticamente
 // 3- Gestire lo stop di autoplay e l'inversione
 
+//______________________VUE__________________
 
 const { createApp } = Vue;
 
@@ -240,15 +239,21 @@ createApp({
   },
 
   methods: {
-    showNext: function(){
+    showNext: function () {
       // console.log("next");
-      if (this.activeIndex === this.images.length - 1){
+      if (this.activeIndex == this.images.length - 1) {
         this.activeIndex = 0;
       } else {
         this.activeIndex++;
       }
-
-    }
-
-  }
+    },
+    showPrev: function () {
+      // console.log("Prev");
+      if (this.activeIndex > 0) {
+        this.activeIndex--;
+      } else {
+        this.activeIndex = this.images.length - 1;
+      }
+    },
+  },
 }).mount("#app");
