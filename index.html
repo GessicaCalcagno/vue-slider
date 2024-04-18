@@ -81,7 +81,7 @@
                   <img
                     class="img-fluid my-thumbnail" :class="(activeIndex === index) ? 'active' : ''" v-for="(curSlide, index) in images" 
                     :src="curSlide.image"
-                    :alt="curSlide.text"  @click="showThumb(index)"
+                    :alt="images[activeIndex].text"  @click="showThumb(index)"
                   />
                   <!-- <img
                   class="img-fluid my-thumbnail active"

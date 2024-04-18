@@ -240,7 +240,7 @@ createApp({
 
   methods: {
     showNext: function () {
-      // console.log("next");
+      console.log("next");
       if (this.activeIndex == this.images.length - 1) {
         this.activeIndex = 0;
       } else {
@@ -248,7 +248,7 @@ createApp({
       }
     },
     showPrev: function () {
-      // console.log("Prev");
+      console.log("Prev");
       if (this.activeIndex > 0) {
         this.activeIndex--;
       } else {
@@ -256,8 +256,9 @@ createApp({
       }
     },
     showThumb: function(index) {
-      this.curIndex = index;
-    }
+      this.activeIndex = index;
+    },
+    
 
   },
 }).mount("#app");
