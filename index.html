@@ -49,11 +49,11 @@
 
                   <!-- --------------------------------------------- -->
                   <!-- immagine 1 -->
-                  <div class="my-carousel-item active" carousel-item="1">
+                  <div class="my-carousel-item"  carousel-item="1" :class="(activeIndex === index) ? 'active' : ''"  v-for="(curSlide, index) in images" carousel-item="1">
                     <img
                       class="img-fluid"
-                      :src="images[activeIndex].image"
-                      :alt="images[activeIndex].text"
+                      :src="curSlide.image"
+                      :alt="curSlide.text"
                     />
                     <div class="item-description px-3">
                       <!-- <h2>Marvel's Spiderman Miles Morale</h2> -->
@@ -62,25 +62,6 @@
                     </div>
                   </div>
                   <!-- /immagine 1 -->
-
-                  <!--_____________ COME ERA PRIMA _________ -->
-                  <!-- immagine 1
-                  <div class="my-carousel-item active" carousel-item="1">
-                  <img
-                    class="img-fluid"
-                    src="./img/01.webp"
-                    alt="Marvel's Spiderman Miles Morale picture"
-                  />
-                  <div class="item-description px-3">
-                    <h2>Marvel's Spiderman Miles Morale</h2>
-                    <p>
-                      Experience the rise of Miles Morales as the new hero
-                      masters incredible, explosive new powers to become his own
-                      Spider-Man.
-                    </p>
-                  </div>
-                </div> -->
-                  <!-- immagine 2 -->
                   <!-- etc .... -->
                   <!--____________________________ -->
                 </div>
@@ -95,14 +76,15 @@
                   <div class="my-next position-absolute" @click= "showNext">
                     <span class="my-next-hook"></span>
                   </div>
+
                   <!-- immagini interne -->
                   <img
-                    class="img-fluid my-thumbnail active"
-                    src="./img/01.webp"
-                    alt="Thumbnail of Marvel's Spiderman Miles Morale picture"
+                    class="img-fluid my-thumbnail" :class="(activeIndex === index) ? 'active' : ''" v-for="(curSlide, index) in images" 
+                    :src="curSlide.image"
+                    :alt="curSlide.text"  @click="showThumb(index)"
                   />
                   <!-- <img
-                  class="img-fluid my-thumbnail"
+                  class="img-fluid my-thumbnail active"
                   src="./img/02.webp"
                   alt="Thumbnail of Ratchet & Clank: Rift Apart picture"
                 /> -->

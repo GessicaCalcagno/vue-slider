@@ -255,5 +255,9 @@ createApp({
         this.activeIndex = this.images.length - 1;
       }
     },
+    showThumb: function(index) {
+      this.curIndex = index;
+    }
+
   },
 }).mount("#app");
