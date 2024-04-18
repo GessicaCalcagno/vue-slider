@@ -238,6 +238,16 @@ createApp({
     };
   },
 
+  created() {
+    setInterval(() => {
+      if (this.activeIndex === this.images.length - 1) {
+        this.activeIndex = 0;
+      } else {
+        this.activeIndex++;
+      }
+    }, 3000);
+  },
+
   methods: {
     showNext: function () {
       console.log("next");
@@ -255,10 +265,8 @@ createApp({
         this.activeIndex = this.images.length - 1;
       }
     },
-    showThumb: function(index) {
+    showThumb: function (index) {
       this.activeIndex = index;
     },
-    
-
   },
 }).mount("#app");

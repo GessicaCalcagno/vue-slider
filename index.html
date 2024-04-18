@@ -49,7 +49,13 @@
 
                   <!-- --------------------------------------------- -->
                   <!-- immagine 1 -->
-                  <div class="my-carousel-item"  carousel-item="1" :class="(activeIndex === index) ? 'active' : ''"  v-for="(curSlide, index) in images" carousel-item="1">
+                  <div
+                    class="my-carousel-item"
+                    carousel-item="1"
+                    :class="(activeIndex === index) ? 'active' : ''"
+                    v-for="(curSlide, index) in images"
+                    carousel-item="1"
+                  >
                     <img
                       class="img-fluid"
                       :src="curSlide.image"
@@ -65,27 +71,31 @@
                 </div>
 
                 <!-------------- IMG BOTTOM ------------->
-                <div class="my-thumbnails position-relative" >
+                <div class="my-thumbnails position-relative">
                   <!-- prev -->
-                  <div class="my-previous position-absolute" @click= "showPrev">
+                  <div class="my-previous position-absolute" @click="showPrev">
                     <span class="my-prev-hook"></span>
                   </div>
                   <!-- next -->
-                  <div class="my-next position-absolute" @click= "showNext">
+                  <div class="my-next position-absolute" @click="showNext">
                     <span class="my-next-hook"></span>
                   </div>
 
                   <!-- immagini interne -->
                   <img
-                    class="img-fluid my-thumbnail" :class="(activeIndex === index) ? 'active' : ''" v-for="(curSlide, index) in images" 
+                    class="img-fluid my-thumbnail"
+                    :class="(activeIndex === index) ? 'active' : ''"
+                    v-for="(curSlide, index) in images"
                     :src="curSlide.image"
-                    :alt="images[activeIndex].text"  @click="showThumb(index)"
+                    :alt="images[activeIndex].text"
+                    @click="showThumb(index)"
                   />
                   <!-- etc ... -->
                 </div>
               </div>
             </div>
 
+            <!-- BUTTONS -->
             <div class="col-12 p-3" id="my-after-carousel">
               <button id="my-order-button" class="btn btn-primary mx-3">
                 Inverti l'ordine di scorrimento
@@ -102,3 +112,24 @@
     <script src="./js/main.js"></script>
   </body>
 </html>
+
+// let autoplayInterval = null; // Variabile per controllare l'intervallo di autoplay
+// let isAutoplayActive = false; // Flag per tenere traccia dello stato dell'autoplay
+
+// // Seleziona il pulsante Start
+// const startBtn = document.getElementById("my-stop-button");
+// console.log(startBtn);
+// // Aggiungi un listener di eventi al pulsante Start
+// startBtn.addEventListener("click", function () {
+//   toggleAutoplay();
+// });
+
+// // Funzione per avviare o fermare l'autoplay
+// function toggleAutoplay() {
+//   if (!isAutoplayActive) {
+//     autoplayInterval = setInterval(showNext, 3000);
+//     isAutoplayActive = true;
+//   } else {
+//     clearInterval(autoplayInterval);
+//     isAutoplayActive = false;
+//   }
