@@ -84,8 +84,11 @@ createApp({
     stopStarAutoplay: function () {
       if (this.autoPlayActive) {
         clearInterval(this.autoPlayInterval);
+        this.autoPlayActive = true;
       } else {
+        clearInterval(this.autoPlayInterval);
         this.autoPlayInterval = setInterval(this.showNext, 3000);
+        this.autoPlayActive = false;
       }
       //Se è attivo imposta al click che non è attivo o viceversa
       return (this.autoPlayActive = !this.autoPlayActive);
