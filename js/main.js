@@ -208,6 +208,8 @@ createApp({
   data() {
     return {
       activeIndex: 0,
+      autoPlayInterval: null,
+      autoPlayActive: true,
       images: [
         {
           image: "img/01.webp",
@@ -240,35 +242,52 @@ createApp({
 
   //Created lo puoi usare una sola volta e Parte all'avvio della pagina
   created() {
-    setInterval(this.showNext, 3000);
-    //   setInterval(() => {
-    //     if (this.activeIndex === this.images.length - 1) {
-    //         this.activeIndex = 0;
-    //     } else {
-    //         this.activeIndex++;
-    //     }
-    // }, 3000);
+    if (this.autoPlayActive) {
+      this.autoPlayInterval = setInterval(this.showNext, 3000);
+    }
   },
 
   methods: {
     showNext: function () {
       console.log("next");
       if (this.activeIndex == this.images.length - 1) {
-          this.activeIndex = 0;
+        this.activeIndex = 0;
       } else {
-          this.activeIndex++;
+        this.activeIndex++;
       }
     },
     showPrev: function () {
       console.log("Prev");
       if (this.activeIndex > 0) {
-          this.activeIndex--;
+        this.activeIndex--;
       } else {
-          this.activeIndex = this.images.length - 1;
+        this.activeIndex = this.images.length - 1;
       }
     },
     showThumb: function (index) {
       this.activeIndex = index;
+    },
+
+    stopStarAutoplay: function () {
+      if (this.autoPlayActive) {
+        clearInterval(this.autoPlayInterval);
+      } else {
+        this.autoPlayInterval = setInterval(this.showNext, 3000);
+      }
+      //Se è attivo imposta al click che non è attivo o viceversa
+      return (this.autoPlayActive = !this.autoPlayActive);
+    },
+
+    invert: function () {
+      if (this.autoPlayActive) {
+        clearInterval(this.autoPlayInterval);
+        this.autoPlayInterval = setInterval(this.showPrev, 3000);
+        this.autoPlayActive = false;
+      } else {
+        clearInterval(this.autoPlayInterval);
+        this.autoPlayInterval = setInterval(this.showNext, 3000);
+        this.autoPlayActive = true;
+      }
     },
   },
 }).mount("#app");
