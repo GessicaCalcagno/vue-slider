@@ -238,31 +238,33 @@ createApp({
     };
   },
 
+  //Created lo puoi usare una sola volta e Parte all'avvio della pagina
   created() {
-    setInterval(() => {
-      if (this.activeIndex === this.images.length - 1) {
-        this.activeIndex = 0;
-      } else {
-        this.activeIndex++;
-      }
-    }, 3000);
+    setInterval(this.showNext, 3000);
+    //   setInterval(() => {
+    //     if (this.activeIndex === this.images.length - 1) {
+    //         this.activeIndex = 0;
+    //     } else {
+    //         this.activeIndex++;
+    //     }
+    // }, 3000);
   },
 
   methods: {
     showNext: function () {
       console.log("next");
       if (this.activeIndex == this.images.length - 1) {
-        this.activeIndex = 0;
+          this.activeIndex = 0;
       } else {
-        this.activeIndex++;
+          this.activeIndex++;
       }
     },
     showPrev: function () {
       console.log("Prev");
       if (this.activeIndex > 0) {
-        this.activeIndex--;
+          this.activeIndex--;
       } else {
-        this.activeIndex = this.images.length - 1;
+          this.activeIndex = this.images.length - 1;
       }
     },
     showThumb: function (index) {
